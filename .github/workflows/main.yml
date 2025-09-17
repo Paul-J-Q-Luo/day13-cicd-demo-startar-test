@@ -135,18 +135,18 @@ jobs:
       - name: Build application
         run: ./gradlew build -x test
 
-      - name: Install Railway CLI
-        if: github.event_name != 'pull_request'
-        run: npm install -g @railway/cli
-
-      - name: Deploy to Railway App Service
-        if: github.event_name != 'pull_request'
-        run: |
-          echo "Starting deployment to Railway..."
-          railway up --service ${{ secrets.RAILWAY_SERVICE_ID }}
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-          RAILWAY_PROJECT_ID: ${{ secrets.RAILWAY_PROJECT_ID }}
+#      - name: Install Railway CLI
+#        if: github.event_name != 'pull_request'
+#        run: npm install -g @railway/cli
+#
+#      - name: Deploy to Railway App Service
+#        if: github.event_name != 'pull_request'
+#        run: |
+#          echo "Starting deployment to Railway..."
+#          railway up --service ${{ secrets.RAILWAY_SERVICE_ID }}
+#        env:
+#          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+#          RAILWAY_PROJECT_ID: ${{ secrets.RAILWAY_PROJECT_ID }}
 
       - name: Health Check
         run: |
